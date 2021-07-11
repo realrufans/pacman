@@ -1,0 +1,83 @@
+ body {
+     margin: 10;
+     padding: 10;
+ }
+ 
+ .gridContainer {
+     max-width: 900px;
+     width: 95%;
+     margin: 0 auto;
+     display: flex;
+     flex-wrap: wrap;
+     width: 420px;
+     height: 420px;
+     border: solid black;
+ }
+ /* // 0 - pacdots
+// 1 - wall
+// 2 - ghost lair
+// 3 - powerpellets
+// 4 - empty */
+ 
+ .gridContainer>div {
+     width: 15px;
+     height: 15px;
+ }
+ 
+ .pac-dots {
+     background-color: green;
+     border: 5px solid white;
+     box-sizing: border-box;
+ }
+ 
+ .wall {
+     background-color: rgb(4, 88, 114);
+ }
+ 
+ .ghost-lair {
+     background-color: grey;
+ }
+ 
+ .power-pellets {
+     background-color: rgb(6, 126, 56);
+     border-radius: 7.5px;
+ }
+ 
+ .pac-man {
+     background-color: rgba(236, 213, 9, 0.815);
+     border: none;
+     border-radius: 7.5px;
+ }
+ /* Ghosts */
+ 
+ .blinky {
+     background-color: red;
+     border: none;
+ }
+ 
+ .pinky {
+     background-color: pink;
+     border: none;
+ }
+ 
+ .inky {
+     background-color: aqua;
+     border: none;
+ }
+ 
+ .clyde {
+     background-color: orange;
+     border: none;
+ }
+ 
+ .scared-ghost {
+     background-color: red;
+ }
+ 
+ h3 {
+     text-align: center;
+ }
+ 
+ #score {
+     text-transform: capitalize;
+ }
