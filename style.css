@@ -1,19 +1,19 @@
- body {
-     margin: 10;
-     padding: 10;
-     overflow: hidden;
- }
+html, body {
+    margin: 10;
+    padding: 10;
+    text-align: center;
+    overflow: hidden;
+}
  
  .gridContainer {
-     max-width: 900px;
-     width: 95%;
-     margin: 0 auto;
-     display: flex;
-     flex-wrap: wrap;
-     width: 420px;
-     height: 420px;
-     border: solid black;
+    display: flex;
+    flex-wrap: wrap;
+    width: 420px;
+    height: 420px;
+    border: solid black;
+    margin: 50px auto;
  }
+
  /* // 0 - pacdots
 // 1 - wall
 // 2 - ghost lair
@@ -49,6 +49,8 @@
  .startbtn:hover {
     background-color: rgb(7, 103, 133);
  }
+
+ 
  
  .pac-dots {
      background-color: green;
