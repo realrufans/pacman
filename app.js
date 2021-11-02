@@ -1,10 +1,12 @@
 const width = 28
 const grid = document.querySelector(".gridContainer")
 const scoreDisplay = document.getElementById("score")
+const button = document.getElementById('startbtn')
 let squares = []
 let score = 0
 let pacManCurrentIndex = 489
 
+ 
 // 0 - pacdots
 // 1 - wall
 // 2 - ghost lair
@@ -67,6 +69,7 @@ function createBoard() {
         }
     }
     squares[pacManCurrentIndex].classList.add("pac-man")
+    
 }
 createBoard()
 
@@ -82,27 +85,68 @@ class Ghost {
         this.timerId = NaN
     }
 }
-
+ 
 const ghosts = [
     new Ghost("blinky", 348, 250),
     new Ghost("pinky", 376, 400),
     new Ghost("inky", 351, 300),
     new Ghost("clyde", 379, 500),
 ]
+    ghosts.forEach((ghost) => {
+        squares[ghost.startIndex].classList.add(ghost.name)
+        squares[ghost.startIndex].classList.add("ghost")
+        squares[ghost.startIndex].classList.remove("scared-ghost")
+          
+    })
+ 
+   
 
-// adding ghosts to the board
+button.innerText ='Start Game'
 
-function addGhostAndGHostName() {
 
+const constantsForWinAndLose = () =>{
+    ghosts.forEach((ghost) => {
+        squares[ghost.currentIndex].classList.remove(ghost.name)
+        squares[ghost.currentIndex].classList.remove("ghost")
+        squares[ghost.currentIndex].classList.remove("scared-ghost")
+    })
+    squares[pacManCurrentIndex].classList.remove("pac-man")
+
+    button.classList.remove('disabled')
+    button.classList.add('startbtn')
+    button.innerHTML = 'Restart'
+    document.querySelector('.startbtn').disabled  = false
+    console.log(button)
+    console.log('Game ended')
 }
 
-ghosts.forEach((ghost) => {
-    squares[ghost.startIndex].classList.add(ghost.name)
-    squares[ghost.startIndex].classList.add("ghost")
-    squares[ghost.startIndex].classList.remove("scared-ghost")
-})
+console.log('Game waiting to be started')
+console.log(button)
 
-ghosts.forEach((ghost) => moveGhost(ghost))
+ const startGame = () => {
+     score = 0;
+     scoreDisplay.innerHTML = " "
+    createBoard()
+     console.log('started')
+     squares[pacManCurrentIndex].classList.remove("pac-man")
+     pacManCurrentIndex = 489
+     console.log(button)
+     squares[pacManCurrentIndex].classList.add("pac-man")
+    ghosts.forEach((ghost) => {
+        ghost.currentIndex = ghost.startIndex
+        squares[ghost.startIndex].classList.add(ghost.name)
+        squares[ghost.startIndex].classList.add("ghost")
+        squares[ghost.startIndex].classList.remove("scared-ghost")
+    })
+    addEventListener()
+ document.querySelector('.startbtn').disabled  = true
+ ghosts.forEach((ghost) => moveGhost(ghost))
+ button.classList.remove('startbtn')
+ button.classList.add('disabled')
+ }
+
+
+ button.addEventListener('click', startGame )
 
 // move ghosts
 
@@ -160,9 +204,8 @@ function eatPowerpellets() {
     }
 }
 
-function unScareGhost() {
-    ghosts.forEach((ghost) => (ghost.isScared = false))
-}
+const unScareGhost =() => ghosts.forEach((ghost) => (ghost.isScared = false))
+
 
 // contoles
 function controle(e) {
@@ -239,7 +282,10 @@ function checkForLose() {
         clearGhostTimer()
         removeEventListener()
         scoreDisplay.innerHTML = " you've been busted!"
-    }
+        constantsForWinAndLose()
+      
+         
+    } 
 }
 
 function checkForwin() {
@@ -247,6 +293,7 @@ function checkForwin() {
         clearGhostTimer()
         removeEventListener()
         scoreDisplay.innerHTML = "You won!"
+        constantsForWinAndLose()
 
     }
 }
@@ -258,3 +305,5 @@ function clearGhostTimer() {
 function removeEventListener() {
     document.removeEventListener("keydown", controle)
 }
+
+const addEventListener=()=>  document.addEventListener("keydown", controle)

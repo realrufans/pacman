@@ -1,6 +1,7 @@
  body {
      margin: 10;
      padding: 10;
+     overflow: hidden;
  }
  
  .gridContainer {
@@ -22,6 +23,31 @@
  .gridContainer>div {
      width: 15px;
      height: 15px;
+ }
+
+ .startbtn{
+    background-color: rgb(4, 88, 114);
+    display: flex;
+    color: white;
+    padding:1em;
+    margin: 0 auto;
+    font-size: 1rem;
+    margin-top: 2em;
+    cursor: pointer;
+   
+ }
+ .disabled{
+     background-color: grey;
+     cursor: none;
+     display: flex;
+     color: white;
+     padding:1em;
+     margin: 0 auto;
+     font-size: 1rem;
+     margin-top: 2em;
+ }
+ .startbtn:hover {
+    background-color: rgb(7, 103, 133);
  }
  
  .pac-dots {
